@@ -14,15 +14,15 @@ This repo contains the reimplementation for [Variational image compression with 
 
 You should install the libraries of this repo.
 
-``
+```
 pip install -r requirements.txt
-``
+```
 
 ## Data Preparation
 
 We need to first prepare the training and validation data.
 The trainging data is from flicker.com.
-You can obtain the training data according to description of [CompressionData](https://github.com/liujiaheng/CompressionData)
+You can obtain the training data according to description of [CompressionData](https://github.com/liujiaheng/CompressionData).
 
 The validation data is the popular kodak dataset.
 ```
@@ -43,7 +43,7 @@ CUDA_VISIBLE_DEVICES=0 python train.py --config examples/example/config_high.jso
 For other high bitrate (4096, 6144), we use the converged model of 8192 as pretrain model and set the learning rate as 1e-5.
 The training iterations is set as 50w.
 
-The low bitrate training process follows the same strategy.
+The low bitrate (256, 512, 1024, 2048) training process follows the same strategy.
 
 If your find our code is helpful for your research, please cite our paper.
 Besides, this code is only for research.
@@ -54,3 +54,4 @@ Besides, this code is only for research.
   journal={arXiv preprint arXiv:2002.03370},
   year={2020}
 }
+```
