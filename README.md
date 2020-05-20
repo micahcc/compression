@@ -20,7 +20,7 @@ pip install -r requirements.txt
 
 We need to first prepare the training and validation data.
 The trainging data is from flicker.com.
-You can download the data in [link](https://bhpan.buaa.edu.cn:443/link/5A49A835629D57929F82A2D97A6EC855)
+You can download the data in [link](https://bhpan.buaa.edu.cn:443/link/5A49A835629D57929F82A2D97A6EC855).
 Then you can generate the 256*256 patches using following script.
 ```
 python data/generatePatchFlickr.py flicker_2W_images/ output_path/
@@ -58,4 +58,3 @@ Besides, this code is only for research.
   journal={arXiv preprint arXiv:2002.03370},
   year={2020}
 }
-'''
