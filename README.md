@@ -1,7 +1,7 @@
 
 ## Overview
 Pytorch baseline code of our recent work [A Unified End-to-End Framework for Efficient Deep Image Compression](https://arxiv.org/abs/2002.03370).
-This repo contains the reimplementation for [Variational image compression with a scale hyperprior](https://arxiv.org/abs/1802.01436)
+This repo contains the reimplementation for [Variational image compression with a scale hyperprior](https://arxiv.org/abs/1802.01436).
 
 
 ## Content
@@ -13,19 +13,16 @@ This repo contains the reimplementation for [Variational image compression with 
 ## Prerequisites
 
 You should install the libraries of this repo.
+
 ``
 pip install -r requirements.txt
 ``
+
 ## Data Preparation
 
 We need to first prepare the training and validation data.
 The trainging data is from flicker.com.
-You can download the data in [link](https://bhpan.buaa.edu.cn:443/link/5A49A835629D57929F82A2D97A6EC855).
-Then you can generate the 256*256 patches using following script.
-```
-python data/generatePatchFlickr.py flicker_2W_images/ output_path/
-```
-The size of output training dataset is over 80G.
+You can obtain the training data according to description of [CompressionData](https://github.com/liujiaheng/CompressionData)
 
 The validation data is the popular kodak dataset.
 ```
