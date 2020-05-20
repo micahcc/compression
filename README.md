@@ -1,7 +1,7 @@
 
 ## Overview
-
-Pytorch Reimplementation for [Variational image compression with a scale hyperprior](https://arxiv.org/abs/1802.01436)
+Pytorch baseline code of our recent work [A Unified End-to-End Framework for Efficient Deep Image Compression](https://arxiv.org/abs/2002.03370).
+This repo contains the reimplementation for [Variational image compression with a scale hyperprior](https://arxiv.org/abs/1802.01436)
 
 
 ## Content
