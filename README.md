@@ -34,7 +34,6 @@ bash data/download_kodak.sh
 
 ## Training 
 
-We provided several examples to train TSM with this repo:
 For high bitrate (4096, 6144, 8192), the out_channel_N is 192 and the out_channel_M is 320 in 'config_high.json'.
 For low bitrate (256, 512, 1024, 2048), the out_channel_N is 128 and the out_channel_M is 192 in 'config_low.json'.
 
