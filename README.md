@@ -42,7 +42,7 @@ For low bitrate (256, 512, 1024, 2048), the out_channel_N is 128 and the out_cha
 For high bitrate of 8192, we first train from scratch as follows.
 
 ```
-CUDA_VISIBLE_DEVICES=0 python test.py --config examples/example/config_high.json -n baseline_8192 --train flicker_path --val kodak_path
+CUDA_VISIBLE_DEVICES=0 python train.py --config examples/example/config_high.json -n baseline_8192 --train flicker_path --val kodak_path
 ```
 For other high bitrate (4096, 6144), we use the converged model of 8192 as pretrain model and set the learning rate as 1e-5.
 The training iterations is set as 50w.
@@ -59,4 +59,3 @@ Besides, this code is only for research.
   year={2020}
 }
 '''
-```
