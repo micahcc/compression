@@ -37,6 +37,9 @@ For high bitrate (4096, 6144, 8192), the out_channel_N is 192 and the out_channe
 For low bitrate (256, 512, 1024, 2048), the out_channel_N is 128 and the out_channel_M is 192 in 'config_low.json'.
 
 ### Details
+
+#### PSNR experiments.
+
 For high bitrate of 8192, we first train from scratch as follows.
 
 ```
@@ -46,6 +49,11 @@ For other high bitrate (4096, 6144), we use the converged model of 8192 as pretr
 The training iterations are set as 500000.
 
 The low bitrate (256, 512, 1024, 2048) training process follows the same strategy.
+
+#### MS-SSIM experiments
+
+You should change the distorsion loss to (1-MS_SSIM), and fine-tune the pretrained model optimized by PSNR to accelerate the training process. 
+You can find more details in our released paper. The training strategy is similar.
 
 If your find our code is helpful for your research, please cite our paper.
 Besides, this code is only for research.
