@@ -31,13 +31,17 @@ def load_model(model, f):
 
 
 class ImageCompressor(nn.Module):
-    def __init__(self, out_channel_N=192, out_channel_M=320):
+    def __init__(self, in_channels=3, out_channel_N=192, out_channel_M=320):
         super(ImageCompressor, self).__init__()
         self.Encoder = Analysis_net(
-            out_channel_N=out_channel_N, out_channel_M=out_channel_M
+            in_channels=in_channels,
+            out_channel_N=out_channel_N,
+            out_channel_M=out_channel_M,
         )
         self.Decoder = Synthesis_net(
-            out_channel_N=out_channel_N, out_channel_M=out_channel_M
+            in_channels=in_channels,
+            out_channel_N=out_channel_N,
+            out_channel_M=out_channel_M,
         )
         self.priorEncoder = Analysis_prior_net(
             out_channel_N=out_channel_N, out_channel_M=out_channel_M

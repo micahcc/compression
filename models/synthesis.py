@@ -1,4 +1,3 @@
-#!/Library/Frameworks/Python.framework/Versions/3.5/bin/python3.5
 import math
 import torch.nn as nn
 import torch
@@ -11,7 +10,7 @@ class Synthesis_net(nn.Module):
     Decode synthesis
     """
 
-    def __init__(self, out_channel_N=192, out_channel_M=320):
+    def __init__(self, in_channels, out_channel_N=192, out_channel_M=320):
         super(Synthesis_net, self).__init__()
         self.deconv1 = nn.ConvTranspose2d(
             out_channel_M, out_channel_N, 5, stride=2, padding=2, output_padding=1
@@ -42,11 +41,18 @@ class Synthesis_net(nn.Module):
         torch.nn.init.constant_(self.deconv3.bias.data, 0.01)
         self.igdn3 = GDN(out_channel_N, inverse=True)
         self.deconv4 = nn.ConvTranspose2d(
-            out_channel_N, 3, 5, stride=2, padding=2, output_padding=1
+            out_channel_N, in_channels, 5, stride=2, padding=2, output_padding=1
         )
         torch.nn.init.xavier_normal_(
             self.deconv4.weight.data,
-            (math.sqrt(2 * 1 * (out_channel_N + 3) / (out_channel_N + out_channel_N))),
+            (
+                math.sqrt(
+                    2
+                    * 1
+                    * (out_channel_N + in_channels)
+                    / (out_channel_N + out_channel_N)
+                )
+            ),
         )
         torch.nn.init.constant_(self.deconv4.bias.data, 0.01)
 
@@ -58,8 +64,8 @@ class Synthesis_net(nn.Module):
         return x
 
 
-def build_model():
-    input_image = torch.zeros([7, 3, 256, 256])
+def build_model(in_channels):
+    input_image = torch.zeros([7, in_channels, 256, 256])
     analysis_net = Analysis_net()
     synthesis_net = Synthesis_net()
     feature = analysis_net(input_image)

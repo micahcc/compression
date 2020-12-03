@@ -41,8 +41,8 @@ class Analysis_prior_net(nn.Module):
         return self.conv3(x)
 
 
-def build_model():
-    input_image = torch.zeros([5, 3, 256, 256])
+def build_model(in_channels):
+    input_image = torch.zeros([5, in_channels, 256, 256])
     analysis_net = Analysis_net()
     analysis_prior_net = Analysis_prior_net()
 
