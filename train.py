@@ -93,7 +93,17 @@ def adjust_learning_rate(config, optimizer, global_step):
     return lr
 
 
-def train(net, train_loader, config, tb_logger, epoch, global_step, cur_lr, optimizer):
+def train(
+    net,
+    train_loader,
+    test_loader,
+    config,
+    tb_logger,
+    epoch,
+    global_step,
+    cur_lr,
+    optimizer,
+):
     logger.info("Epoch {} begin".format(epoch))
     net.train()
 
@@ -163,8 +173,9 @@ def train(net, train_loader, config, tb_logger, epoch, global_step, cur_lr, opti
 
         if (global_step % config.save_model_freq) == 0:
             save_model(net, global_step, config.save_path)
+
         if (global_step % config.test_step) == 0:
-            testKodak(global_step)
+            testKodak(net, test_loader, global_step, tb_logger)
             net.train()
 
     return global_step
@@ -329,6 +340,7 @@ def main():
         global_step = train(
             net=net,
             train_loader=train_loader,
+            test_loader=test_loader,
             config=config,
             tb_logger=tb_logger,
             epoch=epoch,

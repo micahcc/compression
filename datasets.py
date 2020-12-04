@@ -8,7 +8,7 @@ import numpy as np
 
 
 class Dataset(Dataset):
-    def __init__(self, data_dir, augment=False, image_size=256, channels=3, depth=8):
+    def __init__(self, data_dir, augment=False, image_size=512, channels=3, depth=8):
         self.data_dir = data_dir
         self.image_size = image_size
 
@@ -37,7 +37,7 @@ class Dataset(Dataset):
         if self.augment:
             transform = transforms.Compose(
                 [
-                    # transforms.RandomResizedCrop(self.image_size),
+                    transforms.RandomResizedCrop(self.image_size),
                     transforms.RandomHorizontalFlip(),
                     transforms.RandomVerticalFlip(),
                     np.array,
@@ -46,7 +46,9 @@ class Dataset(Dataset):
                 ]
             )
         else:
-            transform = transforms.Compose([transforms.ToTensor()])
+            transform = transforms.Compose(
+                [transforms.RandomResizedCrop(self.image_size), transforms.ToTensor()]
+            )
         return transform(image)
 
     def __len__(self):
